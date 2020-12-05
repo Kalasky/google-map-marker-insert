@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Welcome</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome</title>
 
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    
-    <style>
-      /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;
-        /* The height is 400 pixels */
-        width: 100%;
-        /* The width is the width of the web page */
-        margin-top: 2rem;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1 class="text-center">
-          <span class="fa fa-map-pin"></span> Add A Pinned Location!
-        </h1>
-        <hr />
 
-        <div class="text-center">
-          <a href="/listings"
-            ><button class="btn btn-lg btn-primary">
-              <span class="fa fa-list-alt"></span> View Listing
-            </button></a
-          >
-          <a href="/add"
-            ><button class="btn btn-lg btn-danger">
-              <span class="fa fa-plus-square"></span> Add Location
-            </button></a
-          >
-        </div>
+  <style>
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 400px;
+      /* The height is 400 pixels */
+      width: 100%;
+      /* The width is the width of the web page */
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="text-center">
+        <span class="fa fa-map-pin"></span> Add A Pinned Location!
+      </h1>
+      <hr />
+
+      <div class="text-center">
+        <a href="/listings"><button class="btn btn-lg btn-primary">
+            <span class="fa fa-list-alt"></span> View Listing
+          </button></a>
+        <a href="/add"><button class="btn btn-lg btn-danger">
+            <span class="fa fa-plus-square"></span> Add Location
+          </button></a>
       </div>
-
-      <div id="map"></div>
-
-      <footer class="footer">
-        <div class="container">
-          <p><a href="/api/listings">Listing API</a></p>
-        </div>
-      </footer>
     </div>
-   <script type="text/javascript">  
+
+    <div id="map"></div>
+
+    <footer class="footer">
+      <div class="container">
+        <p><a href="/api/listings">Listing API</a></p>
+      </div>
+    </footer>
+  </div>
+  <script type="text/javascript">
     var geocoder;
     var map;
 
@@ -66,11 +64,11 @@
     }
 
     function geoAddress(geocoder, map) {
-      $.ajax({ url: "/api/listings", method: "GET" }).then(function(markerData) {
+      $.ajax({ url: "/api/listings", method: "GET" }).then(function (markerData) {
         for (var i = 0; i < markerData.length; i++) {
           var obj = markerData[i];
           var address = obj.address;
-          geocoder.geocode({ address: address }, function(results, status) {
+          geocoder.geocode({ address: address }, function (results, status) {
             if (status === "OK") {
               map.setCenter(results[0].geometry.location);
               var marker = new google.maps.Marker({
@@ -87,11 +85,9 @@
         }
       });
     }
-    </script>
-      <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4OXOsS11xbs4YToM5Ikh_BFFM76lCY4w&callback=initMap"
-    ></script>
-  </body>
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-L9IunLv5MuI_OS-HLELisCuko1e9GE&callback=initMap"></script>
+</body>
+
 </html>
